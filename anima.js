@@ -14,7 +14,6 @@
 				return ( t == d ) ? b + c : c * ( -Math.pow( 2, -10 * t / d ) + 1 ) + b;
 			}
 		},
-		fpsDelay: 1000 / 60,
 		tween: function( element, options )
 		{
 			var elementStyle = element.style,
@@ -61,14 +60,14 @@
 			if ( !this.looping )
 			{
 				this.looping = true;
-				this.eventLoop();
+				this.renderLoop();
 			}
 
 			//this.framesCount = 0;
 
 			return o;
 		},
-		eventLoop: function()
+		renderLoop: function()
 		{
 			var now = +new Date(),
 				i = this.objects.length,
@@ -113,7 +112,7 @@
 			// "recursion"
 			if ( this.objects.length > 0 )
 			{
-				requestAnimationFrame( this.eventLoop.bind( this ) );
+				requestAnimationFrame( this.renderLoop.bind( this ) );
 			}
 			else
 			{
