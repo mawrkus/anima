@@ -68,7 +68,6 @@
 
 			return o;
 		},
-		// cheeck requestAnimationFrame instead
 		eventLoop: function()
 		{
 			var now = +new Date(),
@@ -111,7 +110,7 @@
 				}
 			}
 
-			// recursion
+			// "recursion"
 			if ( this.objects.length > 0 )
 			{
 				requestAnimationFrame( this.eventLoop.bind( this ) );
